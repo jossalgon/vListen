@@ -4,14 +4,16 @@ import os
 
 from variables import bot, WIT_TOKEN
 
+uses = []
 
 class Utils:
     def listen(self, message):
-        user_id = message.from_user.id
-        chat_id = message.chat.id
-        reply_id = message.message_id
-        file_info = bot.get_file(message.voice.file_id)
-        self.send_listen(file_info, user_id, chat_id, reply_id)
+        if message.reply_to_message is not None and message.reply_to_message.voice is not None:
+            user_id = message.from_user.id
+            chat_id = message.chat.id
+            reply_id = message.message_id
+            file_info = bot.get_file(message.reply_to_message.voice.file_id)
+            self.send_listen(file_info, user_id, chat_id, reply_id)
 
     def send_listen(self, file_info, user_id, chat_id, reply_id):
         global uses
