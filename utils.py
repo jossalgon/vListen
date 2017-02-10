@@ -40,7 +40,7 @@ class Utils:
             print(e)
 
         if len(text) == 0:
-            text = '🔇 Mensaje de voz en silencio'
+            text = '🗣 Lo siento, no te he entendido'
         else:
             text = '💬 %s' % text.lower().capitalize()
         os.remove('%s.ogg' % name)
