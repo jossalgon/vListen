@@ -24,12 +24,12 @@ while True:
 
 
         @bot.message_handler(content_types=['voice'], func=lambda msg: msg.chat.type == 'private')
-        def listen_handler(message):
+        def listen_handler_voice(message):
             utils.listen(message)
 
 
         @bot.message_handler(regexp='[Ll]isten')
-        def listen_handler(message):
+        def listen_handler_command(message):
             if message.reply_to_message is not None and message.reply_to_message.voice is not None:
                 utils.listen(message)
 
